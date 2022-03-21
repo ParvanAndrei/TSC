@@ -7,7 +7,7 @@
 
 
 
-module instr_register_test (tb_ifc test_laborator_4);
+module instr_register_test (tb_ifc.tb test_laborator_4);
   import instr_register_pkg::*;  // user-defined types are defined in instr_register_pkg.sv
   //( input  logic          clk,
   //  output logic          load_en,
@@ -37,16 +37,16 @@ module instr_register_test (tb_ifc test_laborator_4);
     test_laborator_4.read_pointer   = 5'h1F;         // initialize read pointer
     test_laborator_4.load_en        = 1'b0;          // initialize load control line
     test_laborator_4.reset_n       <= 1'b0;          // assert reset_n (active low)
-    repeat (2) @(posedge test_laborator_4.clk) ;     // hold in reset for 2 clock cycles
+    repeat (2) @(posedge test_laborator_4.cb.clk) ;     // hold in reset for 2 clock cycles
     test_laborator_4.reset_n        = 1'b1;          // deassert reset_n (active low)
 
     $display("\nWriting values to register stack...");
-    @(posedge test_laborator_4.clk) test_laborator_4.load_en = 1'b1;  // enable writing to register
+    @(posedge test_laborator_4.cb.clk) test_laborator_4.load_en = 1'b1;  // enable writing to register
     repeat (3) begin
-      @(posedge test_laborator_4.clk) randomize_transaction;
-      @(negedge test_laborator_4.clk) print_transaction;
+      @(posedge test_laborator_4.cb.clk) randomize_transaction;
+      @(negedge test_laborator_4.cb.clk) print_transaction;
     end
-    @(posedge test_laborator_4.clk) test_laborator_4.load_en = 1'b0;  // turn-off writing to register
+    @(posedge test_laborator_4.cb.clk) test_laborator_4.load_en = 1'b0;  // turn-off writing to register
 
     // read back and display same three register locations
     $display("\nReading back the same register locations written...");
@@ -54,11 +54,11 @@ module instr_register_test (tb_ifc test_laborator_4);
       // later labs will replace this loop with iterating through a
       // scoreboard to determine which addresses were written and
       // the expected values to be read back
-      @(posedge test_laborator_4.clk) test_laborator_4.read_pointer = i;
-      @(negedge test_laborator_4.clk) print_results;
+      @(posedge test_laborator_4.cb.clk) test_laborator_4.read_pointer = i;
+      @(negedge test_laborator_4.cb.clk) print_results;
     end
 
-    @(posedge test_laborator_4.clk) ;
+    @(posedge test_laborator_4.cb.clk) ;
     $display("\n***********************************************************");
     $display(  "***  THIS IS NOT A SELF-CHECKING TESTBENCH (YET).  YOU  ***");
     $display(  "***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***");
