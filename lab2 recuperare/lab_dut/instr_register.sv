@@ -43,3 +43,6 @@ end
 `endif
 
 endmodule: instr_register
+
+//tema: trebuie sa adaugati in pkg de instruction word un semnal care sa se numeasca result, tipul definit de noi, si in dut in functie de ce tip
+//opcod trebuie sa facem operatia corespunzatoare poti face un case 

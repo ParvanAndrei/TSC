@@ -7,7 +7,7 @@
 
 
 
-module instr_register_test (tb_ifc.tb test_laborator_4);
+module instr_register_test (tb_ifc.tb test_laborator_4); //e o instatiere a interfetei pentru a prelua de acolo 
   import instr_register_pkg::*;  // user-defined types are defined in instr_register_pkg.sv
   //( input  logic          clk,
   //  output logic          load_en,
@@ -23,42 +23,49 @@ module instr_register_test (tb_ifc.tb test_laborator_4);
 
  // timeunit 1ns/1ns;
 
-  int seed = 555;
+  int seed = 555;  // reprezinta valoarea initiala cu care se incepe randomizare
 
-  initial begin
+  initial begin    // timpul de simulare 0 
     $display("\n\n***********************************************************");
     $display(    "***  THIS IS NOT A SELF-CHECKING TESTBENCH (YET).  YOU  ***");
     $display(    "***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***");
     $display(    "***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***");
     $display(    "***********************************************************");
+    $display("first header");
 
     $display("\nReseting the instruction register...");
-    test_laborator_4.write_pointer  = 5'h00;         // initialize write pointer
-    test_laborator_4.read_pointer   = 5'h1F;         // initialize read pointer
-    test_laborator_4.load_en        = 1'b0;          // initialize load control line
-    test_laborator_4.reset_n       <= 1'b0;          // assert reset_n (active low)
-    repeat (2) @(posedge test_laborator_4.cb.clk) ;     // hold in reset for 2 clock cycles
-    test_laborator_4.reset_n        = 1'b1;          // deassert reset_n (active low)
+    test_laborator_4.cb.write_pointer <= 5'h00;         // initialize write pointer
+    test_laborator_4.cb.read_pointer  <= 5'h1F;         // initialize read pointer
+    test_laborator_4.cb.load_en       <= 1'b0;          // initialize load control line
+    test_laborator_4.cb.reset_n       <= 1'b0;          // assert reset_n (active low)
+    repeat (2) @(posedge test_laborator_4.cb) ;     // hold in reset for 2 clock cycles
+    test_laborator_4.cb.reset_n       <= 1'b1;          // deassert reset_n (active low)
 
     $display("\nWriting values to register stack...");
-    @(posedge test_laborator_4.cb.clk) test_laborator_4.load_en = 1'b1;  // enable writing to register
-    repeat (3) begin
-      @(posedge test_laborator_4.cb.clk) randomize_transaction;
-      @(negedge test_laborator_4.cb.clk) print_transaction;
+    @(posedge test_laborator_4.cb) test_laborator_4.cb.load_en <= 1'b1;  // enable writing to register
+    repeat (10) begin
+      @(posedge test_laborator_4.cb) randomize_transaction; // se apeleaza functia, task-ul poate contine valori temporale @posedge sau #5ns, timpul de simulare la functii e 0
+      @(negedge test_laborator_4.cb) print_transaction;
     end
-    @(posedge test_laborator_4.cb.clk) test_laborator_4.load_en = 1'b0;  // turn-off writing to register
+    @(posedge test_laborator_4.cb) test_laborator_4.cb.load_en <= 1'b0;  // turn-off writing to register
 
     // read back and display same three register locations
     $display("\nReading back the same register locations written...");
-    for (int i=0; i<=2; i++) begin
+    // repeat(10) begin
+    //   automatic int i = $random(10);
+    //   $display(i);
+    //   @(posedge test_laborator_4.cb) test_laborator_4.cb.read_pointer <= i;
+    //   @(negedge test_laborator_4.cb) print_results;    
+    // end
+    for (int i=10; i<=0; i--) begin
       // later labs will replace this loop with iterating through a
       // scoreboard to determine which addresses were written and
       // the expected values to be read back
-      @(posedge test_laborator_4.cb.clk) test_laborator_4.read_pointer = i;
-      @(negedge test_laborator_4.cb.clk) print_results;
+      @(posedge test_laborator_4.cb) test_laborator_4.cb.read_pointer <= i;
+      @(negedge test_laborator_4.cb) print_results;
     end
 
-    @(posedge test_laborator_4.cb.clk) ;
+    @(posedge test_laborator_4.cb) ;
     $display("\n***********************************************************");
     $display(  "***  THIS IS NOT A SELF-CHECKING TESTBENCH (YET).  YOU  ***");
     $display(  "***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***");
@@ -75,25 +82,27 @@ module instr_register_test (tb_ifc.tb test_laborator_4);
     // addresses of 0, 1 and 2.  This will be replaceed with randomizeed
     // write_pointer values in a later lab
     //
-    static int temp = 0;
-    test_laborator_4.operand_a     <= $random(seed)%16;                 // between -15 and 15
-    test_laborator_4.operand_b     <= $unsigned($random)%16;            // between 0 and 15
-    test_laborator_4.opcode        <= opcode_t'($unsigned($random)%8);  // between 0 and 7, cast to opcode_t type
-    test_laborator_4.write_pointer <= temp++;
+    static int temp = 0; //declaram temp
+    test_laborator_4.cb.operand_a     <= $random(seed)%16;                 // pe 32 de biti between -15 and 15 lu operand a i se da val random dintre seed%16
+    test_laborator_4.cb.operand_b     <= $unsigned($random)%16;            // between 0 and 15 pe 32 de biti
+    test_laborator_4.cb.opcode        <= opcode_t'($unsigned($random)%8);  // between 0 and 7, cast to opcode_t type trece din index in val in enum
+    test_laborator_4.cb.write_pointer <= temp++;                           // primeste temp dupa ce este luat temp apoi incrementat
   endfunction: randomize_transaction
 
-  function void print_transaction;
-    $display("Writing to register location %0d: ", test_laborator_4.write_pointer);
-    $display("  opcode = %0d (%s)", test_laborator_4.opcode, test_laborator_4.opcode.name);
-    $display("  operand_a = %0d",   test_laborator_4.operand_a);
-    $display("  operand_b = %0d\n", test_laborator_4.operand_b);
+  function void print_transaction; //printeaza din randomize_transaction
+    $display("Writing to register location %0d: ", test_laborator_4.cb.write_pointer);
+    $display("  opcode = %0d (%s)", test_laborator_4.cb.opcode, test_laborator_4.cb.opcode.name);
+    $display("  operand_a = %0d",   test_laborator_4.cb.operand_a);
+    $display("  operand_b = %0d\n", test_laborator_4.cb.operand_b);
+    $display("Time = ns",$time());
   endfunction: print_transaction
 
-  function void print_results;
-    $display("Read from register location %0d: ", test_laborator_4.read_pointer);
-    $display("  opcode = %0d (%s)", test_laborator_4.instruction_word.opc, test_laborator_4.instruction_word.opc.name);
-    $display("  operand_a = %0d",   test_laborator_4.instruction_word.op_a);
-    $display("  operand_b = %0d\n", test_laborator_4.instruction_word.op_b);
+  function void print_results;  //instruction_word este generat de DUT
+    $display("Read from register location %0d: ", test_laborator_4.cb.read_pointer);
+    $display("  opcode = %0d (%s)", test_laborator_4.cb.instruction_word.opc, test_laborator_4.cb.instruction_word.opc.name);
+    $display("  operand_a = %0d",   test_laborator_4.cb.instruction_word.op_a);
+    $display("  operand_b = %0d\n", test_laborator_4.cb.instruction_word.op_b);
+    $display("Time = ns", $time());
   endfunction: print_results
 
 endmodule: instr_register_test

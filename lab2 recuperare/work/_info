@@ -12,129 +12,129 @@ Z5 n@_opt
 Z6 OE;O;6.6d;45
 Z7 dD:\facultate\TSC\lab2
 T_opt1
-V9Ya?:2cJ0YaV@YOJ3>Z^32
-Z8 04 3 4 work top fast 0
-Z9 =1-0492261791fa-6230c299-349-3f98
+Z8 V9Ya?:2cJ0YaV@YOJ3>Z^32
+Z9 04 3 4 work top fast 0
+Z10 =1-0492261791fa-6230c299-349-3f98
 R4
-Z10 n@_opt1
+Z11 n@_opt1
 R6
 R7
 T_opt2
-Z11 VB@`IAM?V`20dGU<7X7KBX0
-R8
-Z12 =1-0492261791fa-622f0ed8-105-3194
+Z12 VB@`IAM?V`20dGU<7X7KBX0
+R9
+Z13 =1-0492261791fa-622f0ed8-105-3194
 R4
-Z13 n@_opt2
+Z14 n@_opt2
 R6
 R7
 vinstr_register
-Z14 Mx1 6 sv_std 3 std
-Z15 DXx6 sv_std 3 std 0 22 WnQ=;W1X^o9K1PIQTgInR3
-Z16 Mx2 4 work 18 instr_register_pkg
-Z17 DXx4 work 18 instr_register_pkg 0 22 :JTF@fFZEAY;_aRJ`=BP83
-Z18 Izlgh4QQ_5WV`>EDVk6A=21
-Z19 V3z9A3Eb_VM7O2iR_@`ig80
+Z15 Mx1 6 sv_std 3 std
+Z16 DXx6 sv_std 3 std 0 22 WnQ=;W1X^o9K1PIQTgInR3
+Z17 Mx2 4 work 18 instr_register_pkg
+Z18 DXx4 work 18 instr_register_pkg 0 22 :JTF@fFZEAY;_aRJ`=BP83
+Z19 !s100 6^c4H@z>TICN;NJ=0DO5K2
+Z20 Izlgh4QQ_5WV`>EDVk6A=21
+Z21 V3z9A3Eb_VM7O2iR_@`ig80
+Z22 !s105 instr_register_sv_unit
 S1
-Z20 dD:\facultate\TSC\TSC\lab2 rezolvat
-Z21 w1647247676
-Z22 8D:/facultate/TSC/TSC/lab2 rezolvat/lab_dut/instr_register.sv
-Z23 FD:/facultate/TSC/TSC/lab2 rezolvat/lab_dut/instr_register.sv
+Z23 dD:\facultate\TSC\lab2 recuperare
+Z24 w1647251276
+Z25 8D:/facultate/TSC/lab2 recuperare/lab_dut/instr_register.sv
+Z26 FD:/facultate/TSC/lab2 recuperare/lab_dut/instr_register.sv
 L0 9
-Z24 OE;L;6.6d;45
+Z27 OE;L;6.6d;45
 r1
 31
-Z25 o-work work -L mtiAvm -L mtiOvm -L mtiUPF
-Z26 !s100 6^c4H@z>TICN;NJ=0DO5K2
-Z27 !s105 instr_register_sv_unit
+Z28 o-work work -L mtiAvm -L mtiOvm -L mtiUPF
 !s85 0
 Xinstr_register_pkg
-R14
 R15
-Z28 I:JTF@fFZEAY;_aRJ`=BP83
-Z29 V:JTF@fFZEAY;_aRJ`=BP83
+R16
+Z29 !s100 V^fH5UCOegY6PL:OBDSV^3
+Z30 I:JTF@fFZEAY;_aRJ`=BP83
+Z31 V:JTF@fFZEAY;_aRJ`=BP83
 S1
-R20
-Z30 w1647247652
-Z31 8D:/facultate/TSC/TSC/lab2 rezolvat/lab_dut/instr_register_pkg.sv
-Z32 FD:/facultate/TSC/TSC/lab2 rezolvat/lab_dut/instr_register_pkg.sv
+R23
+Z32 w1647251252
+Z33 8D:/facultate/TSC/lab2 recuperare/lab_dut/instr_register_pkg.sv
+Z34 FD:/facultate/TSC/lab2 recuperare/lab_dut/instr_register_pkg.sv
 L0 5
-R24
+R27
 r1
 31
-R25
-Z33 !s100 V^fH5UCOegY6PL:OBDSV^3
+R28
 !s85 0
 vinstr_register_test
-R14
 R15
 R16
 R17
-Z34 I=z;?YZeFWZWAYB5QzlbR>0
-Z35 VEBCnBoI9@;K2I3Z?DhHY42
+R18
+Z35 !s100 SSjZ:bW54XCFk05>`F1Eb1
+Z36 I5H:[dXhbLCYcH1n:jfS2Z0
+Z37 VEBCnBoI9@;K2I3Z?DhHY42
+Z38 !s105 instr_register_test_sv_unit
 S1
-R20
-Z36 w1647361974
-Z37 8D:/facultate/TSC/TSC/lab2 rezolvat/lab01_testbench-interface/instr_register_test.sv
-Z38 FD:/facultate/TSC/TSC/lab2 rezolvat/lab01_testbench-interface/instr_register_test.sv
+R23
+Z39 w1648452232
+Z40 8D:/facultate/TSC/lab2 recuperare/lab01_testbench-interface/instr_register_test.sv
+Z41 FD:/facultate/TSC/lab2 recuperare/lab01_testbench-interface/instr_register_test.sv
 L0 10
-R24
+R27
 r1
-31
-R25
-Z39 !s100 hl]j<;YK2JB`cO_U`g>kd1
-Z40 !s105 instr_register_test_sv_unit
 !s85 0
+31
+R28
 Ytb_ifc
-R14
 R15
 R16
 R17
-Z41 I8=1FCZV]z3V;AEThG[L=P2
-Z42 V[2MM;6bj4cE27ld353ZQ90
+R18
+Z42 ICG5X]9WSY:RcY9WYVl_h62
+Z43 V[2MM;6bj4cE27ld353ZQ90
+Z44 !s105 tb_ifc_sv_unit
 S1
-R20
-Z43 w1647249736
-Z44 8D:/facultate/TSC/TSC/lab2 rezolvat/lab01_testbench-interface/tb_ifc.sv
-Z45 FD:/facultate/TSC/TSC/lab2 rezolvat/lab01_testbench-interface/tb_ifc.sv
+R23
+Z45 w1648452234
+Z46 8D:/facultate/TSC/lab2 recuperare/lab01_testbench-interface/tb_ifc.sv
+Z47 FD:/facultate/TSC/lab2 recuperare/lab01_testbench-interface/tb_ifc.sv
 L0 5
-R24
+R27
 r1
 31
-R25
-Z46 !s100 BC84V@QW:MOJh<?G>;_C32
-Z47 !s105 tb_ifc_sv_unit
+R28
+Z48 !s100 :Ok1X:<;aXmeYW<MzEQ0<2
 !s85 0
 vtest
-Z48 IURf_MOZ]`U[oEJ70C1G3U2
-Z49 Vk<3<[f=78GX=_HO53D;7>3
+Z49 IURf_MOZ]`U[oEJ70C1G3U2
+Z50 Vk<3<[f=78GX=_HO53D;7>3
 R7
-Z50 w1614777644
-Z51 8D:/facultate/TSC/lab2/test/test.v
-Z52 FD:/facultate/TSC/lab2/test/test.v
+Z51 w1614777644
+Z52 8D:/facultate/TSC/lab2/test/test.v
+Z53 FD:/facultate/TSC/lab2/test/test.v
 L0 7
-R24
+R27
 r1
 31
-R25
-Z53 !s100 UMPJ7EaNf`K3CO`bPi<`Q2
+R28
+Z54 !s100 UMPJ7EaNf`K3CO`bPi<`Q2
 !s85 0
 vtop
-R14
 R15
 R16
 R17
-Z54 I_VkThz8kZFCj?IFYBe4^j2
-Z55 Ve:gFW1CKLAXc^T:7k2HoD1
+R18
+Z55 !s100 YjUU;J3f5@1VVT=`B[IDG3
+Z56 I_VkThz8kZFCj?IFYBe4^j2
+Z57 Ve:gFW1CKLAXc^T:7k2HoD1
+Z58 !s105 top_sv_unit
 S1
-R20
-Z56 w1647362686
-Z57 8D:/facultate/TSC/TSC/lab2 rezolvat/lab01_testbench-interface/top.sv
-Z58 FD:/facultate/TSC/TSC/lab2 rezolvat/lab01_testbench-interface/top.sv
+R23
+Z59 w1647366286
+Z60 8D:/facultate/TSC/lab2 recuperare/lab01_testbench-interface/top.sv
+Z61 FD:/facultate/TSC/lab2 recuperare/lab01_testbench-interface/top.sv
 L0 5
-R24
+R27
 r1
 31
-R25
-Z59 !s105 top_sv_unit
-Z60 !s100 YjUU;J3f5@1VVT=`B[IDG3
+R28
 !s85 0
