@@ -16,7 +16,9 @@ import instr_register_pkg::*;  // user-defined types are defined in instr_regist
  input  opcode_t       opcode,
  input  address_t      write_pointer,
  input  address_t      read_pointer,
+ output result         r,
  output instruction_t  instruction_word
+
 );
   //timeunit 1ns/1ns;
 
@@ -29,7 +31,40 @@ import instr_register_pkg::*;  // user-defined types are defined in instr_regist
         iw_reg[i] = '{opc:ZERO,default:0};  // reset to all zeros
     end
     else if (load_en) begin
-      iw_reg[write_pointer] = '{opcode,operand_a,operand_b};
+      case (opcode)
+        PASSA : begin
+                iw_reg[write_pointer] = '{opcode, operand_a, operand_b, operand_a};
+                r <= operand_a;
+        end
+        PASSB : begin
+                iw_reg[write_pointer] = '{opcode, operand_a, operand_b, operand_b};
+                r <= operand_b;
+        end
+        ADD : begin
+              iw_reg[write_pointer] = '{opcode, operand_a,  operand_b, $signed(operand_a + operand_b)};
+              r <= $signed(operand_a + operand_b);
+        end
+        SUB : begin 
+              iw_reg[write_pointer] = '{opcode, operand_a, operand_b, $signed(operand_a - operand_b)};
+              r <= $signed(operand_a - operand_b);
+        end
+        MULT : begin
+               iw_reg[write_pointer] = '{opcode, operand_a, operand_b, $signed(operand_a * operand_b)};
+               r <= $signed(operand_a * operand_b);
+        end
+        DIV : begin
+              iw_reg[write_pointer] = '{opcode, operand_a, operand_b, $signed(operand_a / operand_b)};
+              r <= $signed(operand_a / operand_b);
+        end
+        MOD : begin 
+              iw_reg[write_pointer] = '{opcode, operand_a, operand_b, $signed(operand_a % operand_b)};
+              r <= $signed(operand_a % operand_b);
+        end
+      default: begin
+               iw_reg[write_pointer] = '{opcode,operand_a,operand_b, 'b0};
+               r <= 'b0;
+      end
+      endcase
     end
 
   // read from the register

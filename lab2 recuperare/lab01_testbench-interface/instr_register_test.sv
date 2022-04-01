@@ -57,7 +57,7 @@ module instr_register_test (tb_ifc.tb test_laborator_4); //e o instatiere a inte
     //   @(posedge test_laborator_4.cb) test_laborator_4.cb.read_pointer <= i;
     //   @(negedge test_laborator_4.cb) print_results;    
     // end
-    for (int i=10; i<=0; i--) begin
+    for (int i=0; i<=10; i++) begin
       // later labs will replace this loop with iterating through a
       // scoreboard to determine which addresses were written and
       // the expected values to be read back
@@ -101,7 +101,8 @@ module instr_register_test (tb_ifc.tb test_laborator_4); //e o instatiere a inte
     $display("Read from register location %0d: ", test_laborator_4.cb.read_pointer);
     $display("  opcode = %0d (%s)", test_laborator_4.cb.instruction_word.opc, test_laborator_4.cb.instruction_word.opc.name);
     $display("  operand_a = %0d",   test_laborator_4.cb.instruction_word.op_a);
-    $display("  operand_b = %0d\n", test_laborator_4.cb.instruction_word.op_b);
+    $display("  operand_b = %0d", test_laborator_4.cb.instruction_word.op_b);
+    $display(" result = %0d\n", test_laborator_4.cb.instruction_word.r);
     $display("Time = ns", $time());
   endfunction: print_results
 

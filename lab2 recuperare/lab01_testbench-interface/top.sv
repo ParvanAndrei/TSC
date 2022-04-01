@@ -42,7 +42,8 @@ module top;
     .opcode(laborator4.opcode),
     .write_pointer(laborator4.write_pointer),
     .read_pointer(laborator4.read_pointer),
-    .instruction_word(laborator4.instruction_word)
+    .instruction_word(laborator4.instruction_word),
+    .r(laborator4.r)
    );
 
   // clock oscillators

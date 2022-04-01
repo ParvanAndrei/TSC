@@ -15,9 +15,11 @@ interface tb_ifc (input logic clk);
   operand_t      operand_a, operand_b;
   address_t      write_pointer, read_pointer;
   instruction_t  instruction_word;
+  result         r;
+  
 
   clocking cb @(clk);
-    input instruction_word;
+    input instruction_word,r;
     output load_en, reset_n, operand_a, operand_b, opcode, write_pointer, read_pointer;
   endclocking
 
