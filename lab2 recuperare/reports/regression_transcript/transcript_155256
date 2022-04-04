@@ -1,0 +1,200 @@
+# 1
+# Model Technology ModelSim SE vlog 6.6d Compiler 2010.11 Nov  1 2010
+# -- Compiling package instr_register_pkg
+# -- Compiling module instr_register
+# -- Importing package instr_register_pkg
+# -- Compiling package instr_register_test_sv_unit
+# -- Importing package instr_register_pkg
+# -- Compiling module instr_register_test
+# -- Compiling interface tb_ifc
+# -- Compiling module top
+# 
+# Top level modules:
+# 	top
+# vsim +notimingchecks +nowarnTSCALE -sva -nocoverage -quiet -sv_seed 155256 -novopt top 
+# Refreshing D:\facultate\TSC\lab2 recuperare\sim\work.instr_register_pkg
+# Refreshing D:\facultate\TSC\lab2 recuperare\sim\work.top
+# Refreshing D:\facultate\TSC\lab2 recuperare\sim\work.tb_ifc
+# Refreshing D:\facultate\TSC\lab2 recuperare\sim\work.instr_register_test_sv_unit
+# Refreshing D:\facultate\TSC\lab2 recuperare\sim\work.instr_register_test
+# Refreshing D:\facultate\TSC\lab2 recuperare\sim\work.instr_register
+# ** Warning: (vsim-8441) ../lab01_testbench-interface/instr_register_test.sv(89): Clocking block output test_laborator_4.cb.opcode is not legal in this
+# or another expression.
+#         Region: /instr_register_test_sv_unit
+# ** Warning: (vsim-8441) ../lab01_testbench-interface/instr_register_test.sv(90): Clocking block output test_laborator_4.cb.operand_a is not legal in this
+# or another expression.
+#         Region: /instr_register_test_sv_unit
+# ** Warning: (vsim-8441) ../lab01_testbench-interface/instr_register_test.sv(91): Clocking block output test_laborator_4.cb.operand_b is not legal in this
+# or another expression.
+#         Region: /instr_register_test_sv_unit
+# ** Warning: (vsim-8441) ../lab01_testbench-interface/instr_register_test.sv(88): Clocking block output test_laborator_4.cb.write_pointer is not legal in this
+# or another expression.
+#         Region: /instr_register_test_sv_unit
+# ** Warning: (vsim-8441) ../lab01_testbench-interface/instr_register_test.sv(96): Clocking block output test_laborator_4.cb.read_pointer is not legal in this
+# or another expression.
+#         Region: /instr_register_test_sv_unit
+# 
+# 
+# ***********************************************************
+# ***  THIS IS NOT A SELF-CHECKING TESTBENCH (YET).  YOU  ***
+# ***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***
+# ***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***
+# ***********************************************************
+# first header
+# 
+# Reseting the instruction register...
+# 
+# Writing values to register stack...
+# Writing to register location 0: 
+#   opcode = 5 (MULT)
+#   operand_a = 14
+#   operand_b = 15
+# 
+# Time = ns                  24
+# Writing to register location 1: 
+#   opcode = 7 (MOD)
+#   operand_a = 1
+#   operand_b = 13
+# 
+# Time = ns                  34
+# Writing to register location 2: 
+#   opcode = 5 (MULT)
+#   operand_a = 12
+#   operand_b = 0
+# 
+# Time = ns                  44
+# Writing to register location 3: 
+#   opcode = 2 (PASSB)
+#   operand_a = 8
+#   operand_b = 12
+# 
+# Time = ns                  54
+# Writing to register location 4: 
+#   opcode = 0 (ZERO)
+#   operand_a = 1
+#   operand_b = 11
+# 
+# Time = ns                  64
+# Writing to register location 5: 
+#   opcode = 2 (PASSB)
+#   operand_a = 14
+#   operand_b = 8
+# 
+# Time = ns                  74
+# Writing to register location 6: 
+#   opcode = 3 (ADD)
+#   operand_a = 3
+#   operand_b = 6
+# 
+# Time = ns                  84
+# Writing to register location 7: 
+#   opcode = 5 (MULT)
+#   operand_a = 6
+#   operand_b = 10
+# 
+# Time = ns                  94
+# Writing to register location 8: 
+#   opcode = 5 (MULT)
+#   operand_a = 10
+#   operand_b = 9
+# 
+# Time = ns                 104
+# Writing to register location 9: 
+#   opcode = 1 (PASSA)
+#   operand_a = 11
+#   operand_b = 4
+# 
+# Time = ns                 114
+# 
+# Reading back the same register locations written...
+# Read from register location 0: 
+#   opcode = 5 (MULT)
+#   operand_a = 14
+#   operand_b = 15
+#  result = 210
+# 
+# Time = ns                 126
+# Read from register location 1: 
+#   opcode = 7 (MOD)
+#   operand_a = 1
+#   operand_b = 13
+#  result = 1
+# 
+# Time = ns                 136
+# Read from register location 2: 
+#   opcode = 5 (MULT)
+#   operand_a = 12
+#   operand_b = 0
+#  result = 0
+# 
+# Time = ns                 146
+# Read from register location 3: 
+#   opcode = 2 (PASSB)
+#   operand_a = 8
+#   operand_b = 12
+#  result = 12
+# 
+# Time = ns                 156
+# Read from register location 4: 
+#   opcode = 0 (ZERO)
+#   operand_a = 1
+#   operand_b = 11
+#  result = 0
+# 
+# Time = ns                 166
+# Read from register location 5: 
+#   opcode = 2 (PASSB)
+#   operand_a = 14
+#   operand_b = 8
+#  result = 8
+# 
+# Time = ns                 176
+# Read from register location 6: 
+#   opcode = 3 (ADD)
+#   operand_a = 3
+#   operand_b = 6
+#  result = 9
+# 
+# Time = ns                 186
+# Read from register location 7: 
+#   opcode = 5 (MULT)
+#   operand_a = 6
+#   operand_b = 10
+#  result = 60
+# 
+# Time = ns                 196
+# Read from register location 8: 
+#   opcode = 5 (MULT)
+#   operand_a = 10
+#   operand_b = 9
+#  result = 90
+# 
+# Time = ns                 206
+# Read from register location 9: 
+#   opcode = 1 (PASSA)
+#   operand_a = 11
+#   operand_b = 4
+#  result = 11
+# 
+# Time = ns                 216
+# Read from register location 10: 
+#   opcode = 0 (ZERO)
+#   operand_a = 0
+#   operand_b = 0
+#  result = 0
+# 
+# Time = ns                 226
+# 
+# ***********************************************************
+# ***  THIS IS NOT A SELF-CHECKING TESTBENCH (YET).  YOU  ***
+# ***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***
+# ***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***
+# ***********************************************************
+# 
+# ** Note: $finish    : ../lab01_testbench-interface/instr_register_test.sv(65)
+#    Time: 234 ns  Iteration: 2  Instance: /top/test
+# 1
+# Break in Task run at ../lab01_testbench-interface/instr_register_test.sv line 65
+# Simulation Breakpoint: 1
+# Break in Task run at ../lab01_testbench-interface/instr_register_test.sv line 65
+# MACRO ./run.do PAUSED at line 46

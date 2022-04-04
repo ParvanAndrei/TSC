@@ -5,27 +5,18 @@
  * a scoreboard for self-verification.
  **********************************************************************/
 
+import instr_register_pkg::*;  // user-defined types are defined in instr_register_pkg.sv
+ // inafara de inital begin totul intra intr-o clasa, functii task-uri, interfata si variabile interne cum ar fi seed u
+class first_class;
+  virtual tb_ifc.tb test_laborator_4; // e o variabila de tip interfata
+  //virtual tb_ifc.tb test_laborator_4 asta e o variabila declarata in clasa
+  //int seed = 555;  // reprezinta valoarea initiala cu care se incepe randomizare
 
+  function  new(virtual tb_ifc.tb intermediar); // preia ca argument un obiect de tip interfata
+    test_laborator_4 = intermediar; //atribui primei variabile argumentul
+  endfunction
 
-module instr_register_test (tb_ifc.tb test_laborator_4); //e o instatiere a interfetei pentru a prelua de acolo 
-  import instr_register_pkg::*;  // user-defined types are defined in instr_register_pkg.sv
-  //( input  logic          clk,
-  //  output logic          load_en,
-  //  output logic          reset_n,
-  //  output operand_t      operand_a,
-  //  output operand_t      operand_b,
-  //  output opcode_t       opcode,
-  //  output address_t      write_pointer,
-  //  output address_t      read_pointer,
-  //  input  instruction_t  instruction_word
-  //tb_ifc test_laborator_4
-  //);
-
- // timeunit 1ns/1ns;
-
-  int seed = 555;  // reprezinta valoarea initiala cu care se incepe randomizare
-
-  initial begin    // timpul de simulare 0 
+  task run();
     $display("\n\n***********************************************************");
     $display(    "***  THIS IS NOT A SELF-CHECKING TESTBENCH (YET).  YOU  ***");
     $display(    "***  NEED TO VISUALLY VERIFY THAT THE OUTPUT VALUES     ***");
@@ -72,7 +63,8 @@ module instr_register_test (tb_ifc.tb test_laborator_4); //e o instatiere a inte
     $display(  "***  MATCH THE INPUT VALUES FOR EACH REGISTER LOCATION  ***");
     $display(  "***********************************************************\n");
     $finish;
-  end
+   //  end
+  endtask
 
   function void randomize_transaction;
     // A later lab will replace this function with SystemVerilog
@@ -83,9 +75,12 @@ module instr_register_test (tb_ifc.tb test_laborator_4); //e o instatiere a inte
     // write_pointer values in a later lab
     //
     static int temp = 0; //declaram temp
-    test_laborator_4.cb.operand_a     <= $random(seed)%16;                 // pe 32 de biti between -15 and 15 lu operand a i se da val random dintre seed%16
-    test_laborator_4.cb.operand_b     <= $unsigned($random)%16;            // between 0 and 15 pe 32 de biti
-    test_laborator_4.cb.opcode        <= opcode_t'($unsigned($random)%8);  // between 0 and 7, cast to opcode_t type trece din index in val in enum
+    // test_laborator_4.cb.operand_a     <= $random(seed)%16;                 // pe 32 de biti between -15 and 15 lu operand a i se da val random dintre seed%16
+    // test_laborator_4.cb.operand_b     <= $unsigned($random)%16;            // between 0 and 15 pe 32 de biti
+    // test_laborator_4.cb.opcode        <= opcode_t'($unsigned($random)%8);  // between 0 and 7, cast to opcode_t type trece din index in val in enum
+    test_laborator_4.cb.operand_a     <= $urandom%16;                 // pe 32 de biti between -15 and 15 lu operand a i se da val random dintre seed%16
+    test_laborator_4.cb.operand_b     <= $unsigned($urandom)%16;            // between 0 and 15 pe 32 de biti
+    test_laborator_4.cb.opcode        <= opcode_t'($unsigned($urandom)%8);  // between 0 and 7, cast to opcode_t type trece din index in val in enum
     test_laborator_4.cb.write_pointer <= temp++;                           // primeste temp dupa ce este luat temp apoi incrementat
   endfunction: randomize_transaction
 
@@ -105,5 +100,39 @@ module instr_register_test (tb_ifc.tb test_laborator_4); //e o instatiere a inte
     $display(" result = %0d\n", test_laborator_4.cb.instruction_word.r);
     $display("Time = ns", $time());
   endfunction: print_results
+
+endclass
+
+
+
+module instr_register_test (tb_ifc.tb test_laborator_4); //e o instatiere a interfetei pentru a prelua de acolo 
+  // import instr_register_pkg::*;  // user-defined types are defined in instr_register_pkg.sv
+  
+  //( input  logic          clk,
+  //  output logic          load_en,
+  //  output logic          reset_n,
+  //  output operand_t      operand_a,
+  //  output operand_t      operand_b,
+  //  output opcode_t       opcode,
+  //  output address_t      write_pointer,
+  //  output address_t      read_pointer,
+  //  input  instruction_t  instruction_word
+  //tb_ifc test_laborator_4
+  //);
+
+ // timeunit 1ns/1ns;
+  initial begin 
+    // run();
+    //declari clasa si ii atribui new si o conectezi
+    first_class first_test;
+    first_test = new(test_laborator_4); //ii dai parametru pentru functia new  instantierea de la module de sus
+    // first_test.test_laborator_4 = test_laborator_4;
+    first_test.run();
+  end
+
+
+ // initial begin    // timpul de simulare 0 e un exemplu de task contine d-alea de timp, nu poate returna o valoare
+
+ 
 
 endmodule: instr_register_test

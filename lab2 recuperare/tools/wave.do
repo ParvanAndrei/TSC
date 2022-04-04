@@ -8,6 +8,7 @@ add wave -noupdate /top/laborator4/reset_n
 add wave -noupdate /top/laborator4/opcode
 add wave -noupdate /top/laborator4/operand_a
 add wave -noupdate /top/laborator4/operand_b
+add wave -noupdate /top/laborator4/r
 add wave -noupdate /top/laborator4/write_pointer
 add wave -noupdate /top/laborator4/read_pointer
 add wave -noupdate /top/laborator4/instruction_word
