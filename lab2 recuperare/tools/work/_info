@@ -1,0 +1,85 @@
+m255
+K3
+13
+cModel Technology
+Z0 dD:\facultate\TSC\lab2 recuperare\tools
+vinstr_register
+Z1 Mx1 6 sv_std 3 std
+Z2 DXx6 sv_std 3 std 0 22 WnQ=;W1X^o9K1PIQTgInR3
+Z3 Mx2 4 work 18 instr_register_pkg
+Z4 DXx4 work 18 instr_register_pkg 0 22 nd^M`6DhDYZR17c818Zha1
+!s100 oOJ_z<2FY[V<TaMA733=50
+IDbVF2WRjo>d?K>BB05f233
+V]QTe^YTYjjb4NbVRP5;nK0
+!s105 instr_register_sv_unit
+S1
+Z5 dD:\facultate\TSC\lab2 recuperare\tools
+w1648810006
+8../lab_dut/instr_register.sv
+F../lab_dut/instr_register.sv
+L0 9
+Z6 OE;L;6.6d;45
+r1
+!s85 0
+31
+Z7 o-sv -work work -L mtiAvm -L mtiOvm -L mtiUPF
+Z8 !s92 -sv -work work +incdir+../../lab_dut +incdir+../../lab_dut +incdir+../lab01_testbench-interface -L mtiAvm -L mtiOvm -L mtiUPF
+Xinstr_register_pkg
+R1
+R2
+!s100 mW^7D@nEDVnlPTC_SceF:2
+Ind^M`6DhDYZR17c818Zha1
+Vnd^M`6DhDYZR17c818Zha1
+S1
+R5
+w1648792498
+8../lab_dut/instr_register_pkg.sv
+F../lab_dut/instr_register_pkg.sv
+L0 5
+R6
+r1
+!s85 0
+31
+R7
+R8
+vinstr_register_test
+R1
+R2
+R3
+R4
+Mx3 4 work 27 instr_register_test_sv_unit
+DXx4 work 27 instr_register_test_sv_unit 0 22 c]?oN?7^@Bj=ZU^]ChPg>3
+VEBCnBoI9@;K2I3Z?DhHY42
+r1
+!s85 0
+31
+!s100 QL8I4]NkjGH^;K8EieQ7W0
+IZT3[:D8n[1WOHhQO7oUkB1
+!s105 instr_register_test_sv_unit
+S1
+R5
+Z9 w1649666058
+Z10 8../lab01_testbench-interface/instr_register_test.sv
+Z11 F../lab01_testbench-interface/instr_register_test.sv
+L0 125
+R6
+R7
+R8
+Xinstr_register_test_sv_unit
+R1
+R2
+R3
+R4
+!s100 V;gA0oJKDCGRPCIaC6e030
+Ic]?oN?7^@Bj=ZU^]ChPg>3
+Vc]?oN?7^@Bj=ZU^]ChPg>3
+!i103 1
+S1
+R5
+R9
+R10
+R11
+L0 8
+R6
+R7
+R8

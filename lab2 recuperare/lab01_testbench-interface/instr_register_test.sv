@@ -9,11 +9,31 @@ import instr_register_pkg::*;  // user-defined types are defined in instr_regist
  // inafara de inital begin totul intra intr-o clasa, functii task-uri, interfata si variabile interne cum ar fi seed u
 class first_class;
   virtual tb_ifc.tb test_laborator_4; // e o variabila de tip interfata
+  parameter gen_no_operation = 100;
+
+
+
+  covergroup my_coverGroup();
+    coverpoint test_laborator_4.cb.operand_a {
+      bins op_a_values_neg = {[-15:-1]};
+      bins op_a_values_zero = {0};
+      bins op_a_values_pos = {[1:15]};
+    }
+    coverpoint test_laborator_4.cb.operand_b {
+      bins op_b_values = {[0:15]};
+    }
+    coverpoint test_laborator_4.cb.opcode {
+      bins op_code_values = {[0:8]};
+    }
+  endgroup
+
+  my_coverGroup cov_test;
   //virtual tb_ifc.tb test_laborator_4 asta e o variabila declarata in clasa
   //int seed = 555;  // reprezinta valoarea initiala cu care se incepe randomizare
 
   function  new(virtual tb_ifc.tb intermediar); // preia ca argument un obiect de tip interfata
     test_laborator_4 = intermediar; //atribui primei variabile argumentul
+  //  cov_test = new();
   endfunction
 
   task run();
@@ -34,9 +54,14 @@ class first_class;
 
     $display("\nWriting values to register stack...");
     @(posedge test_laborator_4.cb) test_laborator_4.cb.load_en <= 1'b1;  // enable writing to register
-    repeat (10) begin
+
+    repeat (gen_no_operation) begin
+      //TEMA cover point pentru rezultat
+  
       @(posedge test_laborator_4.cb) randomize_transaction; // se apeleaza functia, task-ul poate contine valori temporale @posedge sau #5ns, timpul de simulare la functii e 0
       @(negedge test_laborator_4.cb) print_transaction;
+      my_coverGroup.sample();
+   //   cov_test.sample();
     end
     @(posedge test_laborator_4.cb) test_laborator_4.cb.load_en <= 1'b0;  // turn-off writing to register
 
@@ -48,12 +73,15 @@ class first_class;
     //   @(posedge test_laborator_4.cb) test_laborator_4.cb.read_pointer <= i;
     //   @(negedge test_laborator_4.cb) print_results;    
     // end
-    for (int i=0; i<=10; i++) begin
+    for (int i=0; i<=gen_no_operation; i++) begin
       // later labs will replace this loop with iterating through a
       // scoreboard to determine which addresses were written and
       // the expected values to be read back
       @(posedge test_laborator_4.cb) test_laborator_4.cb.read_pointer <= i;
       @(negedge test_laborator_4.cb) print_results;
+      my_coverGroup.sample();
+      // cov_test.sample();
+
     end
 
     @(posedge test_laborator_4.cb) ;
@@ -83,6 +111,9 @@ class first_class;
     test_laborator_4.cb.opcode        <= opcode_t'($unsigned($urandom)%8);  // between 0 and 7, cast to opcode_t type trece din index in val in enum
     test_laborator_4.cb.write_pointer <= temp++;                           // primeste temp dupa ce este luat temp apoi incrementat
   endfunction: randomize_transaction
+//urandom stabil pe clasa
+//random stabil pe thread
+//regresie suite de teste
 
   function void print_transaction; //printeaza din randomize_transaction
     $display("Writing to register location %0d: ", test_laborator_4.cb.write_pointer);
