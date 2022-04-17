@@ -26,9 +26,9 @@ class first_class;
       bins op_code_values = {[0:8]};
     }
     coverpoint test_laborator_4.cb.result{
-      bins result_values_neg = {[$:-1]};
+      bins result_values_neg = {[-225:-1]};
       bins result_values_zero = {0};
-      bins result_values_pos = {[1:$]};
+      bins result_values_pos = {[1:225]};
     }
   endgroup
 
