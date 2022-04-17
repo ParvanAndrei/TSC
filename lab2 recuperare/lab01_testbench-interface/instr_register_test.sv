@@ -25,9 +25,14 @@ class first_class;
     coverpoint test_laborator_4.cb.opcode {
       bins op_code_values = {[0:8]};
     }
+    coverpoint test_laborator_4.cb.result{
+      bins result_values_neg = {[$:-1]};
+      bins result_values_zero = {0};
+      bins result_values_pos = {[1:$]};
+    }
   endgroup
 
-  my_coverGroup cov_test;
+  // my_coverGroup cov_test;
   //virtual tb_ifc.tb test_laborator_4 asta e o variabila declarata in clasa
   //int seed = 555;  // reprezinta valoarea initiala cu care se incepe randomizare
 
