@@ -9,7 +9,7 @@ import instr_register_pkg::*;  // user-defined types are defined in instr_regist
  // inafara de inital begin totul intra intr-o clasa, functii task-uri, interfata si variabile interne cum ar fi seed u
 class first_class;
   virtual tb_ifc.tb test_laborator_4; // e o variabila de tip interfata
-  parameter gen_no_operation = 500;
+  parameter gen_no_operation = 5;
 //fiecare test are propriu sau coverage 
 //se merge uiesc testele pentru a creste coverage
 

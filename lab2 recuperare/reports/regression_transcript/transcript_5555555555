@@ -1,0 +1,14 @@
+# 1
+# Model Technology ModelSim SE vlog 6.6d Compiler 2010.11 Nov  1 2010
+# ** Error: (vlog-1902) Option "-coverr" is either unknown, requires an argument, or was given with a bad argument.
+# Use the -help option for complete vlog usage.
+# ** Error: C:/modeltech_6.6d/win32/vlog failed.
+# Error in macro ./run.do line 22
+# C:/modeltech_6.6d/win32/vlog failed.
+#     while executing
+# "vlog -sv -timescale "1ns/1ns" -coverr bcesft -work work       -f sources.txt"
+#     invoked from within
+# "if {$compile_on || [batch_mode] == 0} {
+#   vlib work
+#  vlog -sv -timescale "1ns/1ns" -work work       -f sources.txt
+#   vlog -sv -timescale "1ns/1ns" -..."
